@@ -34,6 +34,7 @@ DEFAULT_CONFIG = {
     "API_BASE_URL": os.getenv("API_BASE_URL", "default"),
     "PRETTIFY_MARKDOWN": os.getenv("PRETTIFY_MARKDOWN", "true"),
     "USE_LITELLM": os.getenv("USE_LITELLM", "false"),
+    "EXTRA_HEADERS": os.getenv("SGPT_EXTRA_HEADERS", ""),
     # New features might add their own config variables here.
 }
 

@@ -17,6 +17,9 @@ additional_kwargs = {
     "base_url": None if base_url == "default" else base_url,
 }
 
+if cfg.get("EXTRA_HEADERS"):
+    additional_kwargs['default_headers'] = dict(map(lambda x: x.split(','), cfg.get("EXTRA_HEADERS").split(';')))
+
 if use_litellm:
     import litellm  # type: ignore
 
