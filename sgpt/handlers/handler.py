@@ -34,6 +34,9 @@ else:
     completion = client.chat.completions.create
     additional_kwargs = {}
 
+if cfg.get("MAX_TOKENS"):
+    additional_kwargs = {"max_tokens": int(cfg.get("MAX_TOKENS"))}
+
 
 class Handler:
     cache = Cache(int(cfg.get("CACHE_LENGTH")), Path(cfg.get("CACHE_PATH")))
