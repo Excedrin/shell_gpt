@@ -35,6 +35,7 @@ DEFAULT_CONFIG = {
     "PRETTIFY_MARKDOWN": os.getenv("PRETTIFY_MARKDOWN", "true"),
     "USE_LITELLM": os.getenv("USE_LITELLM", "false"),
     "EXTRA_HEADERS": os.getenv("SGPT_EXTRA_HEADERS", ""),
+    "MAX_TOKENS": os.getenv("SGPT_MAX_TOKENS", ""),
     # New features might add their own config variables here.
 }
 
@@ -82,7 +83,7 @@ class Config(dict):  # type: ignore
     def get(self, key: str) -> str:  # type: ignore
         # Prioritize environment variables over config file.
         value = os.getenv(key) or super().get(key)
-        if not value:
+        if value == None:
             raise UsageError(f"Missing config key: {key}")
         return value
 
