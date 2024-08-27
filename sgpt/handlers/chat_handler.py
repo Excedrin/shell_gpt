@@ -148,6 +148,12 @@ class ChatHandler(Handler):
     def show_messages_callback(cls, chat_id: str) -> None:
         cls.show_messages(chat_id)
 
+    @classmethod
+    @option_callback
+    def delete_messages_callback(cls, chat_id: str) -> None:
+        cls.chat_session.invalidate(chat_id)
+        typer.echo(f'Removed {chat_id}')
+
     def validate(self) -> None:
         if self.initiated:
             chat_role_name = self.role.get_role_name(self.initial_message(self.chat_id))
