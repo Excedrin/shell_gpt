@@ -110,6 +110,12 @@ def main(
         help="Show all messages from provided chat id.",
         rich_help_panel="Chat Options",
     ),
+    delete_chat: str = typer.Option(
+        None,
+        help="Delete provided chat id.",
+        callback=ChatHandler.delete_messages_callback,
+        rich_help_panel="Chat Options",
+    ),
     list_chats: bool = typer.Option(
         False,
         "--list-chats",
